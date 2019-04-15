@@ -1,10 +1,11 @@
 <html>
-	<head>
-		<title>W02: task1</title>
-	</head>
-	<body>
-		<script>
-			function Vec3(x,y,z)
+<head>
+<title>W02: task1</title>
+</head>
+<body>
+<script>
+	 <script type="text/javascript" src="test.js" charset="uft-8">
+	function Vec3(x,y,z)
 			{
 				this.x=x;
 				this.y=y;
@@ -12,7 +13,7 @@
 
 			}
 
-			Vec3.prototype.max = function () {
+　　　　　Vec3.prototype.max = function () {
   					var max=0
   					if(this.x>this.y)
   						max=this.x
@@ -22,8 +23,8 @@
   						return max
   					else
   						return this.z
-				};
-			Vec3.prototype.min = function () {
+		};
+	Vec3.prototype.min = function () {
   					var min=0
   					if(this.x>this.y)
   						min=this.y
@@ -34,7 +35,7 @@
   					else
   						return this.z
 				};
-			Vec3.prototype.mid = function () {
+	Vec3.prototype.mid = function () {
   				 return this.x > this.y ? (this.y > this.z ? this.y : ( this.x > this.z ? this.z : this.x)) : ( this.x > this.z ? this.x: (this.b > this.z ? this.z : this.x));
 
 				};
