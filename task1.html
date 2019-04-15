@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>W02: task1</title>
+	</head>
+	<body>
+		<script>
+			function Vec3(x,y,z)
+			{
+				this.x=x;
+				this.y=y;
+				this.z=z;
+
+			}
+
+			Vec3.prototype.max = function () {
+  					var max=0
+  					if(this.x>this.y)
+  						max=this.x
+  					else
+  						max=this.y
+  					if(max>this.z)
+  						return max
+  					else
+  						return this.z
+				};
+			Vec3.prototype.min = function () {
+  					var min=0
+  					if(this.x>this.y)
+  						min=this.y
+  					else
+  						min=this.x
+  					if(min<this.z)
+  						return min
+  					else
+  						return this.z
+				};
+			Vec3.prototype.mid = function () {
+  				 return this.x > this.y ? (this.y > this.z ? this.y : ( this.x > this.z ? this.z : this.x)) : ( this.x > this.z ? this.x: (this.b > this.z ? this.z : this.x));
+
+				};
+
+			var v = new Vec3(99, 100,108);
+			min = v.min();
+                        max = v.max();
+			mid = v.mid();
+
+                        document.write("Inputs: X = " + v.x + "  Y = " + v.y + "  Z = " + v.z + "<br>");
+
+			document.write("Results丗 Min="+min," Max="+max," Mid="+mid)
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
