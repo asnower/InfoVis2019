@@ -17,12 +17,12 @@ function main()
     renderer.setSize( width, height );
     document.body.appendChild( renderer.domElement );
 
-    var light = new THREE.PointLight( 0xffffff );
+    var light = new THREE.PointLight( 0xfaaaaa);
     light.position.set( 1, 1, 1 );
     scene.add( light );
     
     var material = new THREE.MeshLambertMaterial({
-    color: 0xffffff
+    color: 0x111111
     });
     
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
