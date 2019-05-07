@@ -18,14 +18,19 @@ function main()
     document.body.appendChild( renderer.domElement );
 
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var material = new THREE.MeshLambertMaterial( { color: 0x123456} );
+    var material = new THREE.MeshLambertMaterial( { color: 0x80ffff} );
     var cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
 
     var light = new THREE.PointLight( 0x456789 );
+    light.position.set(1,1,1);
+    scene.add(light);
+    
+    var light2 = new THREE.PointLight(0xffffff,0.3);
+    light2.position.set(-1,-1,-1);
+    scene.add(light2);
 
-    light.position.set( 1, 1, 1 );
-    scene.add( light );
+    
     loop();
 
     
@@ -33,8 +38,8 @@ function main()
     function loop()
     {
         requestAnimationFrame( loop );
-        cube.rotation.x += 0.001;
-        cube.rotation.y += 0.001;
+        cube.rotation.x += 0.1;
+        cube.rotation.y += 0.1;
         renderer.render( scene, camera );
     }
 }
