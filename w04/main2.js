@@ -16,6 +16,8 @@ function main()
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize( width, height );
     document.body.appendChild( renderer.domElement );
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    directionalLight.position.set(THREE.Object3D.DefaultDown);
 
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
     var material = new THREE.MeshLambertMaterial( { color: 0x80ffff} );
