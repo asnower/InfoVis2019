@@ -1,7 +1,7 @@
 function main()
 {
-    var width = 500;
-    var height = 500;
+    var width = 1000;
+    var height = 1000;
 
     var scene = new THREE.Scene();
 
@@ -115,8 +115,8 @@ function main()
     function loop()
     {
         requestAnimationFrame( loop );
-        cube.rotation.x += 0.001;
-        cube.rotation.y += 0.001;
+        cube.rotation.x += 0.002;
+        cube.rotation.y += 0.002;
         renderer.render( scene, camera );
     }
 }
