@@ -68,7 +68,7 @@ function main()
     material.vertexColors = THREE.FaceColors;
     for ( var i = 0; i < nfaces; i++ )
     {
-        geometry.faces[i].color = new THREE.Color(23, 25, 5);
+        geometry.faces[i].color = new THREE.Color(0, 1, 0);
     }
 
     geometry.computeFaceNormals();
@@ -105,7 +105,7 @@ function main()
         var intersects = raycaster.intersectObject( cube );
         if ( intersects.length > 0 )
         {
-            intersects[0].face.color.setRGB( 1,1, 3 );
+            intersects[0].face.color.setRGB( 1,0.5, 0 );
             intersects[0].object.geometry.colorsNeedUpdate = true;
         }
     }
