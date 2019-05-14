@@ -1,23 +1,11 @@
-function main()
-{
-    var scene = new THREE.Scene();
+var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
-    var fov = 45;
-    var near = 1;
-    var far = 1000;
-    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-
-    scene.add( camera );
-
-    var light = new THREE.PointLight();
-    light.position.set( 5, 5, 5 );
-    scene.add( light );
-
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize( width, height );
-    document.body.appendChild( renderer.domElement );
-
-    var vertices = [
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.body.appendChild( renderer.domElement );
+      
+      var vertices = [
         [0, 0, 0],
         [0, 0, 1],
         [0, 1, 0],
@@ -26,9 +14,9 @@ function main()
         [1, 0, 0],
         [1, 1, 1],
         [1, 1, 0],
-    ];
+      ];
 
-    var faces = [
+      var faces = [
         [0, 1, 2],
         [1, 3, 2],
         [4, 5, 6],
@@ -41,78 +29,32 @@ function main()
         [5, 2, 7],
         [1, 4, 3],
         [4, 6, 3],
-    ];
+      ];
+    
 
-    var geometry = new THREE.Geometry();
-    var material = new THREE.MeshLambertMaterial();
+      var geometry = new THREE.Geometry();
+      for (let i = 0; i < vertices.length; ++i) {
+        geometry.vertices.push(new THREE.Vector3().fromArray(vertices[i]));
+      }
+      for (let i = 0; i < faces.length; ++i) {
+        geometry.faces.push(new THREE.Face3(faces[i][0], faces[i][1], faces[i][2]));
+        geometry.faces[i].color = new THREE.Color(1, 0, 0);
+      }
 
-    var nvertices = vertices.length;
-    for ( var i = 0; i < nvertices; i++ )
-    {
-        var vertex = new THREE.Vector3().fromArray( vertices[i] );
-        geometry.vertices.push( vertex );
-    }
+      var material = new THREE.MeshBasicMaterial();
+      material.vertexColors = THREE.FaceColors;
+      var cube = new THREE.Mesh( geometry, material );
+      scene.add( cube );
+      
+      camera.position.z = 5;
 
-    var nfaces = faces.length;
-    for ( var i = 0; i < nfaces; i++ )
-    {
-        var id = faces[i];
-        var face = new THREE.Face3( id[0], id[1], id[2] );
-        geometry.faces.push( face );
-    }
+      var animate = function () {
+        requestAnimationFrame( animate );
 
-    material.vertexColors = THREE.FaceColors;
-    for ( var i = 0; i < nfaces; i++ )
-    {
-        geometry.faces[i].color = new THREE.Color(0, 1, 0);
-    }
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.02;
 
-    geometry.computeFaceNormals();
-
-    var cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
-
-    document.addEventListener( 'mousedown', mouse_down_event );
-    function mouse_down_event( event )
-    {
-        // Clicked point in window coordinates.
-        // Origin of window coordinates: top-left
-        var x_win = event.clientX;
-        var y_win = event.clientY;
-
-        // Viewport
-        var vx = renderer.domElement.offsetLeft;
-        var vy = renderer.domElement.offsetTop;
-        var vw = renderer.domElement.width;
-        var vh = renderer.domElement.height;
-
-        // Window coordinates to normalized device coordinates
-        // Origin of NDC: center
-        var x_NDC = 2 * ( x_win - vx ) / vw - 1;
-        var y_NDC = -( 2 * ( y_win - vy ) / vh - 1 );
-
-        // Normalized device coordinates to world coordinates
-        var p_NDC = new THREE.Vector3( x_NDC, y_NDC, 1 );
-        var p_wld = p_NDC.unproject( camera );
-
-        var origin = camera.position;
-        var direction = p_wld.sub( camera.position ).normalize();
-        var raycaster = new THREE.Raycaster( origin, direction );
-        var intersects = raycaster.intersectObject( cube );
-        if ( intersects.length > 0 )
-        {
-            intersects[0].face.color.setRGB( 1,0.5, 0 );
-            intersects[0].object.geometry.colorsNeedUpdate = true;
-        }
-    }
-
-    loop();
-
-    function loop()
-    {
-        //requestAnimationFrame( loop );
-        cube.rotation.x += 2.0;
-        cube.rotation.y += 2.0;
         renderer.render( scene, camera );
-    }
-}
+      };
+
+      animate();
