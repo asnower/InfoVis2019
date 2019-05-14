@@ -3,7 +3,6 @@ function main()
     var scene = new THREE.Scene();
 
     var fov = 45;
-    var aspect = width / height;
     var near = 1;
     var far = 1000;
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
