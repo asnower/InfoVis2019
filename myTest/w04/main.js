@@ -1,7 +1,7 @@
 function main()
 {
-    var width = 500;
-    var height = 500;
+    var width = 1000;
+    var height = 1000;
 
     var scene = new THREE.Scene();
 
