@@ -110,6 +110,26 @@ function Isosurfaces( volume, isovalue )
 
     function interpolated_vertex( v0, v1, s )
     {
-        return new THREE.Vector3().addVectors( v0, v1 ).divideScalar( 2 );
+       var lines = volume.resolution.x;
+	var slices = volume.resolution.x * volume.resolution.y;
+	
+	var index0 = v0.x + v0.y * lines + v0.z * slices;
+	var index1 = v1.x + v1.y * lines + v1.z * slices;
+
+	var s0 = volume.values[ index0 ][0];
+	var s1 = volume.values[ index1 ][0];
+
+
+	var p = ( 2*s - ( s0 + s1 ) )/( s1 - s0 );
+	var x = ( v1.x - v0.x)*p/2 + ( v0.x + v1.x )/2;
+
+	p = ( 2*s - ( s0 + s1 ) )/( s1 - s0 );
+	var y = ( v1.y - v0.y)*p/2 + ( v0.y + v1.y )/2;
+
+	p = ( 2*s - ( s0 + s1 ) )/( s1 - s0 );
+	var z = ( v1.z - v0.z )*p/2 + ( v0.z + v1.z )/2;
+
+	
+            return new THREE.Vector3( x , y , z );
     }
 }
