@@ -40,7 +40,7 @@ function Isosurfaces( volume, isovalue )
                     var v3 = new THREE.Vector3( x + vid3[0], y + vid3[1], z + vid3[2] );
                     var v4 = new THREE.Vector3( x + vid4[0], y + vid4[1], z + vid4[2] );
                     var v5 = new THREE.Vector3( x + vid5[0], y + vid5[1], z + vid5[2] );
-
+		    
                     var v01 = interpolated_vertex( v0, v1, isovalue );
                     var v23 = interpolated_vertex( v2, v3, isovalue );
                     var v45 = interpolated_vertex( v4, v5, isovalue );
@@ -48,11 +48,13 @@ function Isosurfaces( volume, isovalue )
                     geometry.vertices.push( v01 );
                     geometry.vertices.push( v23 );
                     geometry.vertices.push( v45 );
+		   
 
                     var id0 = counter++;
                     var id1 = counter++;
                     var id2 = counter++;
                     geometry.faces.push( new THREE.Face3( id0, id1, id2 ) );
+
                 }
             }
             cell_index++;
@@ -62,7 +64,22 @@ function Isosurfaces( volume, isovalue )
 
     geometry.computeVertexNormals();
 
-    material.color = new THREE.Color( "pink" );
+
+    var cmap = [];
+    for ( var i = 0; i < 256; i++ )
+    {
+        var S = i / 255.0; // [0,1]
+        var R = Math.max( Math.cos( ( S - 1.0 ) * Math.PI ), 0.0 );
+        var G = Math.max( Math.cos( ( S - 0.5 ) * Math.PI ), 0.0 );
+        var B = Math.max( Math.cos( S * Math.PI ), 0.0 );
+        var color = new THREE.Color( R, G, B );
+        cmap.push( [ S, '0x' + color.getHexString() ] );
+    }
+
+
+    var color = new THREE.Color().setHex( cmap[ isovalue ][1] );
+
+    material.color = color;
 
     return new THREE.Mesh( geometry, material );
 
@@ -110,7 +127,7 @@ function Isosurfaces( volume, isovalue )
 
     function interpolated_vertex( v0, v1, s )
     {
-       var lines = volume.resolution.x;
+	var lines = volume.resolution.x;
 	var slices = volume.resolution.x * volume.resolution.y;
 	
 	var index0 = v0.x + v0.y * lines + v0.z * slices;
@@ -131,5 +148,6 @@ function Isosurfaces( volume, isovalue )
 
 	
             return new THREE.Vector3( x , y , z );
+		
     }
 }
