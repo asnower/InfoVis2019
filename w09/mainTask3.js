@@ -2,7 +2,6 @@ function main()
 {
     var volume = new KVS.LobsterData();
     var screen = new KVS.THREEScreen();
-    var scene = new THREE.Scene();
 
     screen.init( volume, {
         width: window.innerWidth,
@@ -14,7 +13,7 @@ function main()
     screen.scene.add( bounds );
 
     var isovalue = 128;
-    var surfaces = Isosurfaces( volume, isovalue );
+    var surfaces = Isosurfaces( volume, isovalue, screen );
     screen.scene.add( surfaces );
 
     document.addEventListener( 'mousemove', function() {
@@ -25,18 +24,5 @@ function main()
         screen.resize( [ window.innerWidth, window.innerHeight ] );
     });
 
-   
-    var light = new THREE.PointLight();
-    light.position.set( 5, 5, 5 );
-    screen.scene.add( light );
-
-   
-    var material = new THREE.ShaderMaterial({
-        vertexColors: THREE.VertexColors,
-        vertexShader: document.getElementById('gouraud.vert').text,
-        fragmentShader: document.getElementById('gouraud.frag').text,
-    });
-
-    
     screen.loop();
 }
