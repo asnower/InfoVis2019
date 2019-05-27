@@ -23,6 +23,5 @@ function main()
     window.addEventListener( 'resize', function() {
         screen.resize( [ window.innerWidth, window.innerHeight ] );
     });
-    material.color = new THREE.Color( "white" );
     screen.loop();
 }
