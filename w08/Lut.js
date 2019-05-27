@@ -500,5 +500,3 @@ THREE.ColorMapKeywords = {
 	"grayscale" : [ [ 0.0, '0x000000' ], [ 0.2, '0x404040' ], [ 0.5, '0x7F7F80' ], [ 0.8, '0xBFBFBF' ],  [ 1.0, '0xFFFFFF' ] ]
 
 };
-Lut.js
-当前显示Lut.js。
