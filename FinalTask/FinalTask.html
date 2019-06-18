@@ -29,9 +29,7 @@
 		        <label for="tab1">Isovalue</label>
 		        <div id="tab-content1" class="tab-content">
 					
-
-
-
+								 
 					<legend>Material:</legend>
 					可視化に使用する反射モデルの設定。MeshBasicMaterial、MeshLambertMaterial、MeshPhongMaterialを選択することができる。<br />
 					  <div class="fleft">
@@ -53,19 +51,17 @@
 					<input type="button" class="btn bon-default" style="font-family=Arial" value="Apply" onclick="calculate()">
 					<br /><hr />
 
-					 <legend>Color:</legend>
-					 カラーマップの中でgreen、pink、brownの色を選択することができる。<br />
+					 <legend>Color transfer:</legend>
+					 カラーマップの中で色をつぎの三つのタイプに変換することができる。<br />
 					 <div class="fleft">
 					   <select id="cd-dropdown2" class="cd-select">
-						   <option value="1" selected>Green</option>
-						   <option value="2" >Pink</option>
-						   <option value="3" >Brown</option>
+						   <option value="1" selected>Rainbow-color</option>
+						   <option value="2" >White-red</option>
+						   <option value="3" >Dark-brown</option>
 
 					   </select>
 					</div>
 					
-					 </fieldset>
-
 			    </div>
 	        </li>
 
@@ -74,7 +70,8 @@
 		</ul>
 	  	</div>
 	  	</div>
- 	</div>
+	 </div>
+	
 	<script src="Bounds.js"></script>
 	<script src="three.min.js"></script>
 	<script src="https://threejs.org/examples/js/math/Lut.js"></script>
@@ -83,8 +80,8 @@
 	<script src="https://naohisas.github.io/KVS.js/Build/KVS2THREE.min.js"></script>
 	<script src="KVSLobsterData.js"></script>
 	<script src="IsotropicTurbulenceData.js"></script>
+	<script src="KVSSingleCubeData.js"></script>
 	<script src="jquery.min.js"></script>
-
 		<script type="text/javascript" src="jquery.dropdown.js"></script>
 		<script type="text/javascript" src="slice_three.js"></script>
 	<script src="Isosurfaces.js"></script>

@@ -41,18 +41,9 @@ function main()
     }
     else
     {
-
-        var n1 = parseFloat($('#normal1 option:selected').text());
-        var n2 = parseFloat($('#normal2 option:selected').text());
-        var n3 = parseFloat($('#normal3 option:selected').text());
-        if((n1 == 0 && n2 == 0) && n3 == 0)
-        {
-            alert("Normal vector cannot have length 0. ");
-            n3 = 1;
-        }
         surfaces = null;
         var point = new THREE.Vector3(60,60,17);
-        var normal = new THREE.Vector3(n1,n2,n3);
+        var normal = new THREE.Vector3(1,1,1);
         surfaces = SlicePlane( volume, point, normal, currentTransfer, currentShape, currentMaterial);
     }
     screen.scene.add( surfaces );
@@ -69,6 +60,9 @@ function main()
         surfaces.position.setZ(10);
     }
     screen.renderer.setClearColor( 0xffffff, 1);
+    
+
+    
     document.addEventListener( 'mousemove', function() {
         screen.light.position.copy( screen.camera.position );
     });
@@ -253,15 +247,15 @@ $( function() {
 
                         switch(opt.text())
                         {
-                            case "Pink":
-                            transfer(1,2)
+                            case "Rainbow-color":
+                            transfer(2,2)
                             
                             break;
-                            case "Green":
-                                transfer(2,2)
+                            case "White-red":
+                                transfer(3,2)
                             
                             break;
-                            case "Brown":
+                            case "Dark-brown":
                                 transfer(4,3)
                             break;
                         }
