@@ -4,7 +4,7 @@
 
 .cd-dropdown > span,
 .cd-dropdown ul li:nth-last-child(-n+3) span {
-	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 1px rgba(18, 233, 186, 0.1);
 }
 
 .cd-dropdown ul {
@@ -19,12 +19,12 @@
 }
 
 .cd-active.cd-dropdown > span {
-	color: #4d8c9d;
+	color:#4d8c9d;
 }
 
 .cd-active.cd-dropdown > span,
 .cd-active.cd-dropdown ul li span {
-	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 1px rgba(11, 240, 209, 0.61);
 }
 
 .cd-active.cd-dropdown ul li span {

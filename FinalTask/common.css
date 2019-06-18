@@ -2,7 +2,7 @@
 .cd-select {
 	position: relative;
 	width: 300px;
-	margin: 20px auto;
+	margin: 12px auto;
 	display: block;
 }
 
@@ -14,7 +14,7 @@
 	font-weight: 700;
 	font-size: 16px;
 	background: #fff;
-	display: block;
+	display: inline-block;
 	padding: 0 50px 0 30px;
 	position: relative;
 	cursor: pointer;
@@ -55,7 +55,7 @@
 	background: #fff;
 	line-height: 60px;
 	padding: 0 30px 0 75px;
-	display: block;
+	display: inline-block;
 	color: #bcbcbc;
 	cursor: pointer;
 	font-weight: 700;

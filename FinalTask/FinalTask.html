@@ -1,6 +1,7 @@
 <html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <head>
-	<title>Final task</title>
+	<title>Final Task</title>
 
 	<link rel="stylesheet" type="text/css" href="style2.css" />
 	<link rel="stylesheet" href="style.css">
@@ -8,11 +9,16 @@
 	<script src="modernizr.custom.63321.js"></script>
     </head>
 
-    <body >
+    <body style="margin:40px">
+			<h1>Final Task　　</h1>
+			まず私は使っている方法を紹介していきたいと思います。<br>
+			<br>
+			LobsterDataを使ってMaterial、Color、Isovalue三つのタイプを組み合わせて<br>
+			ユーザーインターフェースを構成しました。<br>
+			さらに、Material、Colorはそれぞれ三つのタイプを選択可能です。<br>
     <div  id="container1">
     	<div id="container2">
-
-	  	<div style="width:50%;float:left;" id="target">
+	  	<div style="width:80%;float:left;" id="target">
 
 	  	</div>
 	  	<div id="col2" >
@@ -22,16 +28,15 @@
 		        <input type="radio" name="tabs" id="tab1" checked />
 		        <label for="tab1">Isovalue</label>
 		        <div id="tab-content1" class="tab-content">
-					<span>Enter isovalue(Between 0 and 254)</span>
-					<input type="text" name="isovalue" id="iso" min="0" max="254" value="100">
-					<input type="button" class="btn btn-default" value="Calculate" onclick="calculate()">
-					<br /><hr />
-					<fieldset style="margin-top:5%; padding:10px;">
-					  <legend>Material:</legend>
+					
+
+
+
+					<legend>Material:</legend>
+					可視化に使用する反射モデルの設定。MeshBasicMaterial、MeshLambertMaterial、MeshPhongMaterialを選択することができる。<br />
 					  <div class="fleft">
 					  <form action="" id="form">
 						<select id="cd-dropdown" class="cd-select" name="first">
-
 							<option value="1" >MeshBasicMaterial</option>
 							<option value="2" >MeshLambertMaterial</option>
 							<option value="3" selected>MeshPhongMaterial</option>
@@ -39,105 +44,33 @@
 						</select>
 					</form>
 					 </div>
-					 </fieldset>
-					 <fieldset style="margin-top:5%; padding:10px;">
-					  <legend>Color:</legend>
-						 <span><input type="radio" style="width:60%;margin-bottom:5%; name="Basic">Transfer function </span>
-						 <span id="colormaps" style="width:60%;margin-bottom:8%;">
-						 	<img src="colormap1.jpg" style="margin-left:15%;width:100%;height:2%;margin-bottom:5%;" onclick="transfer(1,2)"><br>
-						 	<img src="colormap2.jpg" style="width:100%;height:2%;margin-bottom:5%;" onclick="transfer(2,2)"><br>
-						 	<img src="colormap3.jpg" style="width:100%;height:2%;margin-bottom:5%;" onclick="transfer(3,2)"><br>
-						 	<img src="colormap4.jpg" style="width:100%;height:2%;" onclick="transfer(4,2)"><br>
-						 </span>
+			
+					 <span>Isovalue：</span>
+					サーフェスレンダリングのしきい値の設定．<br />
+					値が大きいと見える部分が多くなるが、ノイズも増えている。<br />
+					<input type="text" name="isovalue" id="iso" min="0" max="254" value="100">
 
-					 </fieldset>
-					<fieldset style="margin-top:5%; padding:10px;">
-					  <legend>Figure type:</legend>
+					<input type="button" class="btn bon-default" style="font-family=Arial" value="Apply" onclick="calculate()">
+					<br /><hr />
 
-					  <div class="fleft">
-						<select id="cd-dropdown1" class="cd-select">
-							<option value="1" selected>Lobster</option>
+					 <legend>Color:</legend>
+					 カラーマップの中でgreen、pink、brownの色を選択することができる。<br />
+					 <div class="fleft">
+					   <select id="cd-dropdown2" class="cd-select">
+						   <option value="1" selected>Green</option>
+						   <option value="2" >Pink</option>
+						   <option value="3" >Brown</option>
 
-							<option value="2" >Octahedron</option>
-							<option value="3" >Sphere</option>
-
-
-						</select>
-					 </div>
-
+					   </select>
+					</div>
+					
 					 </fieldset>
 
 			    </div>
 	        </li>
 
-		    <li>
-		        <input type="radio" name="tabs" id="tab2" />
-		        <label for="tab2">Slice</label>
-		        <div id="tab-content2" class="tab-content">
-		          <p>Choose normal vector</p>
-		           <select class="norm" id="normal1">
-		          	<option>0</option>
-		          	<option>0.1</option>
-		          	<option>0.2</option>
-		          	<option>0.3</option>
-		          	<option>0.4</option>
-		          	<option>0.5</option>
-		          	<option>0.6</option>
-		          	<option>0.7</option>
-		          	<option>0.8</option>
-		          	<option>0.9</option>
-		          	<option selected>1</option>
-		          </select>
-		          <select class="norm" id="normal2">
-
-		          	<option>0</option>
-		          	<option>0.1</option>
-		          	<option>0.2</option>
-		          	<option>0.3</option>
-		          	<option>0.4</option>
-		          	<option>0.5</option>
-		          	<option>0.6</option>
-		          	<option>0.7</option>
-		          	<option>0.8</option>
-		          	<option>0.9</option>
-		          	<option selected>1</option>
-		          </select>
-		          </select>
-		          <select class="norm" id="normal3">
-
-		          	<option>0</option>
-		          	<option >0.1</option>
-		          	<option>0.2</option>
-		          	<option>0.3</option>
-		          	<option>0.4</option>
-		          	<option>0.5</option>
-		          	<option>0.6</option>
-		          	<option>0.7</option>
-		          	<option>0.8</option>
-		          	<option>0.9</option>
-		          	<option selected>1</option>
-		          </select>
-
-		          <input type="button"  value="Slice" onclick="slice()">
-
-		          <fieldset style="margin-top:5%; padding:10px;">
-					  <legend>Color:</legend>
-						 <span><input type="radio" style="width:60%;margin-bottom:5%; name="Basic"><span id="trf">Transfer function </span>
-						 <span id="colormaps1" style="width:60%;margin-bottom:8%;">
-						 	<img src="colormap1.jpg" style="margin-left:15%;width:100%;height:2%;margin-bottom:5%;" onclick="transfer(1,2)"><br>
-						 	<img src="colormap2.jpg" style="width:100%;height:2%;margin-bottom:5%;" onclick="transfer(2,2)"><br>
-						 	<img src="colormap3.jpg" style="width:100%;height:2%;margin-bottom:5%;" onclick="transfer(3,2)"><br>
-						 	<img src="colormap4.jpg" style="width:100%;height:2%;" onclick="transfer(4,2)"><br>
-
-						 </span>
-						 <input type="color" id="colorinput"><span id="lbl">Set color</span>
-					 </fieldset>
-
-
-
-		        </div>
-		    </li>
-
+		    
+			
 		</ul>
 	  	</div>
 	  	</div>
@@ -159,7 +92,7 @@
 	<script src="main.js"></script>
 
 	<script>
-	 main(1,178);
+	 main();
 	</script>
     </body>
 </html>

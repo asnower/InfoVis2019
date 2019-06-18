@@ -6,19 +6,20 @@ var surfaces;
 var currentTransfer = 1;
 var currentMaterial = 3;
 var currentShape = 1;
-var currentColor = "0xFFD700";
+var currentColor = "0x000000";
 
 $('#colorinput').hide();
 $('#lbl').hide();
 function main()
 {
+   
     transfer(currentTransfer,1);
 
     screen.init( volume, {
-        width: window.innerWidth*0.8,
-        height: window.innerHeight,
+        width: 1200,
+        height: 800,
         targetDom: document.getElementById('target'),
-        enableAutoResize: false
+        enableAutoResize: true
     });
 
     if(currentMaterial != 1)
@@ -46,7 +47,7 @@ function main()
         var n3 = parseFloat($('#normal3 option:selected').text());
         if((n1 == 0 && n2 == 0) && n3 == 0)
         {
-            alert("Normal vector cannot have length 0. I will calculate with vector (0,0,1)");
+            alert("Normal vector cannot have length 0. ");
             n3 = 1;
         }
         surfaces = null;
@@ -181,9 +182,9 @@ function transfer(c,method)
 $( function() {
 
                 $( '#cd-dropdown' ).dropdown( {
-                    gutter : 5,
-                    delay : 100,
-                    random : true,
+                    gutter : 4,
+                    delay : 30,
+                    random : false,
                     onOptionSelect: function(opt){
                         switch(opt.text())
                         {
@@ -204,12 +205,12 @@ $( function() {
 
             });
 
-            $( function() {
+$( function() {
 
                 $( '#cd-dropdown1' ).dropdown( {
-                    gutter : 5,
-                    delay : 100,
-                    random : true,
+                    gutter : 4,
+                    delay : 30,
+                    random : false,
                     onOptionSelect: function(opt){
 
                         switch(opt.text())
@@ -242,3 +243,32 @@ $( function() {
                 } );
 
             });
+$( function() {
+
+                $( '#cd-dropdown2' ).dropdown( {
+                    gutter : 5,
+                    delay : 30,
+                    random : false,
+                    onOptionSelect: function(opt){
+
+                        switch(opt.text())
+                        {
+                            case "Pink":
+                            transfer(1,2)
+                            
+                            break;
+                            case "Green":
+                                transfer(2,2)
+                            
+                            break;
+                            case "Brown":
+                                transfer(4,3)
+                            break;
+                        }
+                        $('canvas').remove();
+                        main();
+                    }
+                } );
+
+            });
+
