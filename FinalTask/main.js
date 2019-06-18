@@ -1,4 +1,4 @@
-var volume = new KVS.LobsterData();
+var volume = new TurblenceData();
 var screen = new KVS.THREEScreen();
 var cmap = [];
 var currentOperation = 1;
